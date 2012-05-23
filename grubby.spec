@@ -2,7 +2,7 @@ Name: grubby
 Version: 8.11
 Release: 1
 Summary: Command line tool for updating bootloader configs
-Group: System Environment/Base
+Group: System/Base
 License: GPLv2+
 URL: http://git.fedorahosted.org/git/grubby.git
 # we only pull git snaps at the moment
