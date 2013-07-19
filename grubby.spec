@@ -1,5 +1,5 @@
 Name: grubby
-Version: 8.11
+Version: 8.25.1
 Release: 1
 Summary: Command line tool for updating bootloader configs
 Group: System/Base
@@ -8,7 +8,7 @@ URL: http://git.fedorahosted.org/git/grubby.git
 # we only pull git snaps at the moment
 # git clone git://git.fedorahosted.org/git/grubby.git
 # git archive --format=tar --prefix=grubby-%{version}/ HEAD |bzip2 > grubby-%{version}.tar.bz2
-Source0: %{name}-%{version}.tar.bz2
+Source0: http://git.fedorahosted.org/cgit/grubby.git/snapshot/grubby-8.25-1.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: pkgconfig glib2-devel popt-devel 
 BuildRequires: libblkid-devel
@@ -51,3 +51,4 @@ install -p uboot %{buildroot}%{_sysconfdir}/sysconfig/uboot
 %ifarch %{arm}
 %config(noreplace) %{_sysconfdir}/sysconfig/uboot
 %endif
+
