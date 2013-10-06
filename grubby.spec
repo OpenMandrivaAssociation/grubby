@@ -9,7 +9,6 @@ URL: http://git.fedorahosted.org/git/grubby.git
 # git clone git://git.fedorahosted.org/git/grubby.git
 # git archive --format=tar --prefix=grubby-%{version}/ HEAD |bzip2 > grubby-%{version}.tar.bz2
 Source0: http://git.fedorahosted.org/cgit/grubby.git/snapshot/grubby-8.25-1.tar.bz2
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: pkgconfig glib2-devel popt-devel 
 BuildRequires: libblkid-devel
 # for make test / getopt:
@@ -35,7 +34,6 @@ make %{?_smp_mflags}
 make test
 
 %install
-rm -rf %{buildroot}
 make install DESTDIR=%{buildroot} mandir=%{_mandir}
 %ifarch %{arm}
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig/
