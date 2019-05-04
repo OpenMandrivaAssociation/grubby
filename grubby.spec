@@ -31,7 +31,7 @@ BuildRequires: pkgconfig(blkid) git-core
 BuildRequires: util-linux
 BuildRequires: rpm-devel
 %ifarch aarch64 i686 znver1 x86_64 %{power64}
-#BuildRequires: grub2-tools
+BuildRequires: grub2-tools
 Requires: grub2-tools
 %endif
 %ifarch s390 s390x
