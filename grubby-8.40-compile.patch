@@ -1,0 +1,37 @@
+From: Bernhard Rosenkränzer <bero@lindev.ch>
+
+diff -up grubby-8.40-1/Makefile.omv~ grubby-8.40-1/Makefile
+--- grubby-8.40-1/Makefile.omv~	2023-11-26 10:58:37.786388369 +0100
++++ grubby-8.40-1/Makefile	2023-11-26 10:58:44.715452226 +0100
+@@ -59,7 +59,7 @@ grubby:: $(OBJECTS)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(grubby_LIBS)
+ 
+ rpm-sort::rpm-sort.o
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lrpm
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lrpm -lrpmio
+ 
+ clean:
+ 	rm -f *.o grubby rpm-sort *~
+diff -up grubby-8.40-1/grubby.c.omv~ grubby-8.40-1/grubby.c
+--- grubby-8.40-1/grubby.c.omv~	2023-11-26 10:57:43.323885928 +0100
++++ grubby-8.40-1/grubby.c	2023-11-26 10:58:09.488127428 +0100
+@@ -4500,7 +4500,7 @@ int main(int argc, const char ** argv) {
+     int i = 0;
+     for (int j = 1; j < argc; j++)
+ 	i += strlen(argv[j]) + 1;
+-    saved_command_line = malloc(i);
++    saved_command_line = malloc(i+1);
+     if (!saved_command_line) {
+ 	fprintf(stderr, "grubby: %m\n");
+ 	exit(1);
+diff -up grubby-8.40-1/rpm-sort.c.omv~ grubby-8.40-1/rpm-sort.c
+--- grubby-8.40-1/rpm-sort.c.omv~	2023-11-26 10:58:18.819213500 +0100
++++ grubby-8.40-1/rpm-sort.c	2023-11-26 10:58:27.106289918 +0100
+@@ -2,6 +2,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <unistd.h>
+ #include <errno.h>
+ #include <assert.h>

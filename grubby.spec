@@ -1,6 +1,6 @@
 Name: grubby
 Version: 8.40
-Release: 30%{?dist}
+Release: 31
 Summary: Command line tool for updating bootloader configs
 License: GPLv2+
 URL: https://github.com/rhinstaller/grubby
@@ -23,6 +23,7 @@ Patch0007: 0007-Make-installkernel-to-use-kernel-install-scripts-on-.patch
 Patch0008: 0008-Add-usr-libexec-rpm-sort.patch
 Patch0009: 0009-Improve-man-page-for-info-option.patch
 Patch0010: 0010-Fix-GCC-warnings-about-possible-string-truncations-a.patch
+Patch0100: grubby-8.40-compile.patch
 
 BuildRequires: popt-devel 
 BuildRequires: pkgconfig(glib-2.0)
