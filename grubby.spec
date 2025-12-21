@@ -25,6 +25,7 @@ Patch0009: 0009-Improve-man-page-for-info-option.patch
 Patch0010: 0010-Fix-GCC-warnings-about-possible-string-truncations-a.patch
 Patch0100: grubby-8.40-compile.patch
 
+BuildRequires:	make
 BuildRequires: popt-devel 
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(blkid) git-core
